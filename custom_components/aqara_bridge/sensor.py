@@ -1,11 +1,11 @@
 import logging
 from homeassistant.components.sensor import SensorEntity
 
-from .aiot_manager import (
+from .core.aiot_manager import (
     AiotManager,
     AiotEntityBase,
 )
-from .const import DOMAIN, HASS_DATA_AIOT_MANAGER
+from .core.const import DOMAIN, HASS_DATA_AIOT_MANAGER
 
 TYPE = "sensor"
 
@@ -16,8 +16,11 @@ DATA_KEY = f"{TYPE}.{DOMAIN}"
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     manager: AiotManager = hass.data[DOMAIN][HASS_DATA_AIOT_MANAGER]
+    cls_entities = {
+        "default": AiotSensorEntity
+    }
     await manager.async_add_entities(
-        config_entry, TYPE, AiotSensorEntity, async_add_entities
+        config_entry, TYPE, cls_entities, async_add_entities
     )
 
 
@@ -30,4 +33,6 @@ class AiotSensorEntity(AiotEntityBase, SensorEntity):
     def convert_res_to_attr(self, res_name, res_value):
         if res_name == "battry":
             return int(res_value)
+        if res_name == "energy":
+            return round(float(res_value) / 1000.0, 3)
         return super().convert_res_to_attr(res_name, res_value)

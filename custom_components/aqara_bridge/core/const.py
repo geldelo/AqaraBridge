@@ -7,6 +7,7 @@ CONF_FIELD_COUNTRY_CODE = "field_country_code"
 CONF_FIELD_AUTH_CODE = "field_auth_code"
 CONF_FIELD_SELECTED_DEVICES = "field_selected_devices"
 CONF_FIELD_REFRESH_TOKEN = "field_refresh_token"
+CONF_OCCUPANCY_TIMEOUT = 'occupancy_timeout'
 
 # Cloud
 SERVER_COUNTRY_CODES = ["CN", "USA", "KR", "RU", "GER"]
@@ -26,3 +27,24 @@ CONF_ENTRY_AUTH_OPENID = "open_id"
 HASS_DATA_AUTH_ENTRY_ID = "auth_entry_id"
 HASS_DATA_AIOTCLOUD = "aiotcloud"
 HASS_DATA_AIOT_MANAGER = "aiot_manager"
+
+CONF_DEBUG = "debug"
+CONF_STATS = "stats"
+
+OPT_DEBUG = {
+    'true': "Basic logs",
+    'verbose': "Verbose logs",
+    'msg': "msg logs"
+}
+
+ATTR_CHIP_TEMPERATURE = "chip_temperature"
+ATTR_FW_VER = "fw_ver"
+ATTR_LQI = "lqi"
+ATTR_VOLTAGE = "voltage"
+
+PROP_TO_ATTR_BASE = {
+    "chip_temperature": ATTR_CHIP_TEMPERATURE,
+    "fw_ver": ATTR_FW_VER,
+    "lqi": ATTR_LQI,
+    "voltage": ATTR_VOLTAGE
+}

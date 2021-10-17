@@ -32,5 +32,16 @@
                 "title": "Choose the devices"
             }
         }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Bridge Config",
+                "data": {
+                    "stats": "Stats",
+                    "debug": "Debug"
+                }
+            }
+        }
     }
 }
